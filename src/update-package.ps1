@@ -1,7 +1,13 @@
+##
+## Grindstone is a powershell script that enables automated nuget package updates.  The goal is to recursively
+## search a directory for packages.configs.  If the packages.config contains a reference to the package to be
+## updated an update will be performed outside of VisualStudio.
+##
+
 param (
     [switch]$safeMode = $false,
     [Parameter(Mandatory=$true)][string]$packageName,`
-    [string]$nugetFeeds = "https://nuget.hallmarkbusiness.com:443/HBC-Nuget/nuget;https://www.nuget.org/api/v2",
+    [string]$nugetFeeds = "https://www.nuget.org/api/v2",
     [string]$workingDirectory = ".",
     [string]$repositoryPath = $(Join-Path -Path $(if($workingDirectory) { $workingDirectory } else { ".\" }) -childPath "nuget_packages" )   
 )
